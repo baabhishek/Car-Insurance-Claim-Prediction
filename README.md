@@ -93,9 +93,7 @@ Performance Metrics:
 
 Models were evaluated using the following metrics:
 
-1. Accuracy 2. Precision 3. Recall 4. F1-Score
-
-Results:
+1. Accuracy 2. Precision  3. Recall  4. F1-Score
 
 ## Results
 <img width="442" alt="Screenshot 2568-01-15 at 4 52 00 PM" src="https://github.com/user-attachments/assets/8bef1a4e-a8f1-42e1-b8bb-f20429d7fe59" />
