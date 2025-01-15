@@ -1,4 +1,6 @@
 # Car-Insurance-Claim-Prediction
+<img width="1000" alt="Screenshot 2568-01-09 at 7 08 36 PM" src="https://github.com/user-attachments/assets/37b67f7f-6140-4f98-843b-518e9dce804c" />
+
 The aim of this project is to predict whether a customer will file a claim on their car insurance policy based on various factors, including policyholder demographics, car details, and policy characteristics. The project involves end-to-end data processing, exploratory data analysis (EDA), feature selection, data balancing, and predictive modeling.
 
 ## Table of Contents
@@ -96,7 +98,7 @@ Models were evaluated using the following metrics:
 Results:
 
 ## Results
-![Results Visualization](/Users/abhisheksenapati/Desktop/Screenshot 2568-01-15 at 4.52.00 PM.png)
+<img width="442" alt="Screenshot 2568-01-15 at 4 52 00 PM" src="https://github.com/user-attachments/assets/8bef1a4e-a8f1-42e1-b8bb-f20429d7fe59" />
 
 
 - The XGBoost Classifier outperformed other models with the highest accuracy (92.1%) and robust precision, recall, and F1-score. Random Forest also performed well with an accuracy of 91.6%.
