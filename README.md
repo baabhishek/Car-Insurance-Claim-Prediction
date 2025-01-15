@@ -96,7 +96,8 @@ Models were evaluated using the following metrics:
 Results:
 
 ## Results
-'/Users/abhisheksenapati/Desktop/Screenshot 2568-01-15 at 4.52.00 PM.png'
+![Results Visualization](/Users/abhisheksenapati/Desktop/Screenshot 2568-01-15 at 4.52.00 PM.png)
+
 
 - The XGBoost Classifier outperformed other models with the highest accuracy (92.1%) and robust precision, recall, and F1-score. Random Forest also performed well with an accuracy of 91.6%.
 
