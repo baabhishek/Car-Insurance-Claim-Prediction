@@ -1,0 +1,5 @@
+- Local deployment: Built and tested Flask apps with HTML front-end on a local machine for development and debugging.
+
+- Ngrok tunneling: Used Ngrok to securely expose local Flask servers to the internet for quick remote demos without cloud deployment.
+
+- Cloud deployment on Azure: Deployed Flask applications on Azure Virtual Machines using Gunicorn for production-like hosting and public accessibility.
