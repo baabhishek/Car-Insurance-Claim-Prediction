@@ -1,0 +1,7 @@
+Chat gpt link: https://chatgpt.com/c/6828dd4a-9378-8000-8207-c163e10cf219
+
+On senapatiabhishek.blr@gmail.com
+
+Ngrok link : https://6799-2409-40e2-10f4-a135-802b-45b0-c39d-7289.ngrok-free.app/
+
+Token: ngrok config add-authtoken 2xEi24Lky1gAWJSsiIWQlgRjiVs_3wLdsnHtW65VyEWd7QAox

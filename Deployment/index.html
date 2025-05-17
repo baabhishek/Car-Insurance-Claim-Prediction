@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Car Insurance Claim Prediction</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #222 url('/static/back.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow-x: hidden; font-size: 13px;
+    }
+    .container {
+      max-width: 650px;
+      background: rgba(0,0,0,0.6);
+      margin: 40px auto;
+      padding: 25px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 76, 76, 0.85);
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      text-align: center; margin-bottom: 20px;
+      font-size: 20px; font-weight: 700;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px 25px;
+    }
+    label {
+      font-weight: 600; margin-bottom: 4px;
+    }
+    input[type="number"], select {
+      width: 100%; padding: 8px 12px;
+      border-radius: 20px; border: none; font-size: 13px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+    input[type="number"]:focus, select:focus {
+      outline: none; box-shadow: 0 0 8px #ff4c4c;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    button {
+      grid-column: 1 / -1;
+      background: #ff4c4c; color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #e04343;
+    }
+    #prediction {
+      margin-top: 15px; font-weight: 600;
+      font-size: 14px; text-align: center;
+    }
+    @media (max-width: 480px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+    .radio-group {
+      display: flex; gap: 15px; align-items: center;
+    }
+    .radio-group label {
+      font-weight: normal; margin-bottom: 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      padding: 15px 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      margin-top: 20px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer img {
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Car Insurance Claim Prediction</h1>
+  <form method="POST" action="/predict">
+    
+    <label>Policy Tenure (months)</label>
+    <input type="number" name="policy_tenure" required step="any" />
+
+    <label>Age of Car</label>
+    <input type="number" name="age_of_car" required step="any" />
+
+    <label>Age of Policyholder</label>
+    <input type="number" name="age_of_policyholder" required step="any" />
+
+    <label>Population Density</label>
+    <input type="number" name="population_density" required step="any" />
+
+    <label>Parking Sensors</label>
+    <div class="radio-group">
+      <label><input type="radio" name="is_parking_sensors" value="1" required /> Yes</label>
+      <label><input type="radio" name="is_parking_sensors" value="0" required /> No</label>
+    </div>
+
+    <label>Power Steering</label>
+    <div class="radio-group">
+      <label><input type="radio" name="is_power_steering" value="1" required /> Yes</label>
+      <label><input type="radio" name="is_power_steering" value="0" required /> No</label>
+    </div>
+
+    <label>Rear View Mirror</label>
+    <div class="radio-group">
+      <label><input type="radio" name="is_day_night_rear_view_mirror" value="1" required /> Yes</label>
+      <label><input type="radio" name="is_day_night_rear_view_mirror" value="0" required /> No</label>
+    </div>
+
+    <label>Speed Alert</label>
+    <div class="radio-group">
+      <label><input type="radio" name="is_speed_alert" value="1" required /> Yes</label>
+      <label><input type="radio" name="is_speed_alert" value="0" required /> No</label>
+    </div>
+
+    <label>Area Cluster</label>
+    <select name="area_cluster" required>
+      <option value="" disabled selected>Select Area Cluster</option>
+      <option value="C1">C1</option>
+      {% for i in range(2, 23) %}
+      <option value="C{{ i }}">C{{ i }}</option>
+      {% endfor %}
+    </select>
+
+    <label>Segment</label>
+    <select name="segment" required>
+      <option value="" disabled selected>Select Segment</option>
+      <option value="A">A</option>
+      <option value="B1">B1</option>
+      <option value="B2">B2</option>
+      <option value="C1">C1</option>
+      <option value="C2">C2</option>
+      <option value="Utility">Utility</option>
+    </select>
+
+    <label>Model</label>
+    <select name="model" required>
+      <option value="" disabled selected>Select Model</option>
+      <option value="M1">M1</option>
+      <option value="M2">M2</option>
+      <option value="M3">M3</option>
+      <option value="M4">M4</option>
+      <option value="M5">M5</option>
+      <option value="M6">M6</option>
+      <option value="M7">M7</option>
+      <option value="M8">M8</option>
+      <option value="M9">M9</option>
+      <option value="M10">M10</option>
+      <option value="M11">M11</option>
+    </select>
+
+    <label>Engine Type</label>
+    <select name="engine_type" required>
+      <option value="" disabled selected>Select Engine Type</option>
+      <option value="F8D Petrol Engine">F8D Petrol Engine</option>
+      <option value="1.2 L K12N Dualjet">1.2 L K12N Dualjet</option>
+      <option value="1.0 SCe">1.0 SCe</option>
+      <option value="1.5 L U2 CRDi">1.5 L U2 CRDi</option>
+      <option value="1.5 Turbocharged Revotorq">1.5 Turbocharged Revotorq</option>
+      <option value="K Series Dual jet">K Series Dual jet</option>
+      <option value="1.2 L K Series Engine">1.2 L K Series Engine</option>
+      <option value="K10C">K10C</option>
+      <option value="i-DTEC">i-DTEC</option>
+      <option value="G12B">G12B</option>
+      <option value="1.5 Turbocharged Revotron">1.5 Turbocharged Revotron</option>
+    </select>
+
+    <button type="submit">Predict</button>
+
+  </form>
+
+  <div id="prediction">
+    {% if prediction_text %}
+      {{ prediction_text }}
+    {% endif %}
+  </div>
+</div>
+
+<footer>
+  Model Developed by Abhishek Senapati&nbsp;
+  <a href="https://www.linkedin.com/in/senapatiabhishek/" target="_blank" rel="noopener">
+    <img src="https://cdn-icons-png.flaticon.com/16/174/174857.png" alt="LinkedIn" />
+  </a>
+  <a href="https://github.com/baabhishek" target="_blank" rel="noopener">
+    <img src="https://cdn-icons-png.flaticon.com/16/25/25231.png" alt="GitHub" />
+  </a>
+  <a href="https://www.datascienceportfol.io/baabhishek" target="_blank" rel="noopener">
+    Portfolio
+  </a>
+</footer>
+
+</body>
+</html>
